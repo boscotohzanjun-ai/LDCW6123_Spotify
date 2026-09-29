@@ -39,3 +39,36 @@ def calculate_plan_change(current_plan, new_plan):
     else:
         return "Same price — no change in cost."
 
+# Test menu (ignored when imported)
+if __name__ == "__main__":
+    while True:
+        print("\n=== Music App - Subscription Module (Member B) ===")
+        print("1. View & Compare All Plans")
+        print("2. Check Specific Plan Details")
+        print("3. Check Upgrade / Downgrade Cost")
+        print("4. Exit")
+        
+        choice = input("Please select an option (1-4): ").strip()
+        
+        if choice == "1":
+            print("\n" + compare_plans())
+        elif choice == "2":
+            plan_name = input("Enter plan name (free/individual/duo/family/student): ").strip()
+            details = get_plan_details(plan_name)
+            if details:
+                annual = calculate_annual_cost(details['price'])
+                print(f"\nPlan: {plan_name.title()}")
+                print(f"Monthly: RM{details['price']:.2f}")
+                print(f"Annual: RM{annual:.2f}")
+                print(f"Features: {details['features']}")
+            else:
+                print("Plan not found. Please check your spelling.")
+        elif choice == "3":
+            curr = input("Enter current plan: ").strip()
+            new = input("Enter target plan: ").strip()
+            print("\n" + calculate_plan_change(curr, new))
+        elif choice == "4":
+            print("Exiting module, goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
