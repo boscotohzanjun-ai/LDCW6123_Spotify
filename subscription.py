@@ -42,7 +42,7 @@ def calculate_plan_change(current_plan, new_plan):
 # Test menu (ignored when imported)
 if __name__ == "__main__":
     while True:
-        print("\n=== Music App - Subscription Module (Member B) ===")
+        print("\n=== Music App - Subscription Module ===")
         print("1. View & Compare All Plans")
         print("2. Check Specific Plan Details")
         print("3. Check Upgrade / Downgrade Cost")
