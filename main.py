@@ -116,10 +116,10 @@ def calculate_plan_change(current_plan, new_plan):
         return "Same price — no change in cost."
 
 
-# ------------------------------------------
-# Part of: Chen Shan Horng
+
+# Part of Chen Shan Horng
 # Playlist Manager
-# ------------------------------------------
+
 
 def add_song(playlist, song_name, genre, duration):
     playlist.append({"name": song_name, "genre": genre, "duration": duration})
@@ -164,7 +164,9 @@ def main():
         print("5. Add song to playlist")
         print("6. View playlist")
         print("7. Search playlist by genre")
-        print("8. Exit")
+        print("8. Remove song from playlist")
+        print("9. Sort playlist by duration")
+        print("10. Exit")
 
         choice = input("Choose an option: ").strip()
 
@@ -206,11 +208,22 @@ def main():
                 print(result)
 
         elif choice == "8":
+            name = input("Song name to remove: ").strip()
+            my_playlist[:] = remove_song(my_playlist, name)
+            print("Removed (if it existed).")
+
+        elif choice == "9":
+            sorted_songs = sort_by_duration(my_playlist)
+            print("Playlist sorted from shortest to longest:")
+            for s in sorted_songs:
+                print(f"{s['name']} | {s['genre']} | {s['duration']} min")
+
+        elif choice == "10":
             print("Thanks for using the app. Goodbye!")
             break
 
         else:
-            print("Invalid choice. Please enter a number between 1 and 8.")
+            print("Invalid choice. Please enter a number between 1 and 10.")
 
 
 if __name__ == "__main__":
